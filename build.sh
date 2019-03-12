@@ -103,7 +103,7 @@ minify_exist() {
 }
 
 # Extract arguments
-EXPERIMENTAL=YES          # YES to use Docker experimental features, NO otherwise
+EXPERIMENTAL=NO          # YES to use Docker experimental features, NO otherwise
 MINIMAL=NO                # YES to create a minimal eXist-db server Docker image,$ NO for a full image
 SHOW_USAGE=NO             # YES to show the usage message, NO otherwise
 NORECOMPILE=NO            # YES to only run docker build without building exist-db again
@@ -257,5 +257,5 @@ else
 	docker build \
 	  --build-arg VCS_REF=`git rev-parse --short HEAD` \
 	  --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-	  --rm --force-rm $EXPERIMENTAL_ARGS -t "evolvedbinary/exist-db:${BRANCH_NAME}" --file "${DOCKERFILE}" . 1> build.log 2> errors.log
+	  --rm --force-rm $EXPERIMENTAL_ARGS -t "sarit/exist-db:${BRANCH_NAME}" --file "${DOCKERFILE}" . 1> build.log 2> errors.log
 fi
